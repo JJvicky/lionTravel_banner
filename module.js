@@ -5,7 +5,8 @@
         this.ele = element; //element: banner DOM物件
         this.$ele = $(element) ; //  n.fn 物件
         this.$btn = $(`<div class =${opt.button.class} ></div>`);
-        // this.stateCycle =['closed','opening','opened','closing'];
+        this.$up =$('<i class="fas fa-sort-up"></i>');
+        this.$down = $('<i class="fas fa-caret-down"></i>');
         this.option =opt;
         this.$img = $("img");
         this.$wrap =$(".wrap");
@@ -37,18 +38,19 @@
     }
     //開始寫Function
     Module.prototype.init = function(){
-        console.log("hey");
       this.$ele.append(this.$btn);  // 1. button初始
       var openAtStart = this.option.openAtStart;  //2. 畫面是否先開
       console.log(openAtStart);
       if(openAtStart === true){                  
        this.$btn.text(this.option.button.closeText);
+       this.$btn.append(this.$up);
        this.$ele.addClass(this.opened);
        this.$wrap.addClass("opened"); 
        this.$img.addClass("opened");
     //    this.$ele.data("state","opened");
       }else{
        this.$btn.text(this.option.button.openText);
+       this.$btn.append(this.$down)
        this.$ele.addClass(this.closed);
        this.$img.addClass("closed");
        this.$wrap.addClass("closed"); 
@@ -87,7 +89,7 @@
     }
     Module.prototype.open = function(){    //需要精簡一下
         this.$wrap.removeClass("closed").addClass("opened");     
-        this.$btn.text(this.option.button.closeText);     
+        this.$btn.text(this.option.button.closeText).append(this.$up);   
         this.$img.removeClass("closed").addClass("opened");
         if (this.option.transition === true){
             this.$ele.removeClass(this.closed).addClass(this.option.class.opening);
@@ -101,7 +103,8 @@
     }
     Module.prototype.close =function(){    //需要精簡一下
         this.$wrap.removeClass("opened").addClass("closed");   
-        this.$btn.text(this.option.button.openText); 
+        this.$btn.text(this.option.button.openText)
+        this.$btn.append(this.$down);
         let imgAction =  setTimeout(function(){
             this.$img.removeClass("opened").addClass("closed"); 
             }.bind(this),this.option.counter)
@@ -138,7 +141,7 @@
                     // thorw 'unsupported options!' ;
                 }
             }else {
-                opts = $.extend({}, Module.DEFAULTS,(typeof method ==='object'&& method),(typeof options === 'Obect' && options));
+                opts = $.extend({}, Module.DEFAULTS,(typeof options ==='object'&& options),(typeof options2 === 'Obect' && options2));
             }
             module = new Module (this, opts);  
             $(this).data(ModuleName, module);

@@ -34,12 +34,27 @@
     cursor: pointer;
     display: flex;
     }
- 
+     .lbx_lnop .btn{
+    font-size: 13px;
+    position: absolute;
+    bottom: 0 ;
+    right: 0;
+    padding: 5px 6px;
+    color: #a3a3a3;
+    background-color: black;
+    border-radius: 3px 0 0 0 ;
+    cursor: pointer;
+    display: flex;
+    }
+    .lbx_lnop .btn:hover{
+      color: white;  
+    }
     .btn>i {
     display: block;
       align-items: flex-end;
       margin-top: 8px;
     }
+  
     img{
     display: block;
     position: absolute;
@@ -49,7 +64,7 @@
     /* transition: 1.5s; */
     }
     img.closed{
-    top: -340px;
+    top: -300px;
     /* transition: 1.5s; */
     }
 
