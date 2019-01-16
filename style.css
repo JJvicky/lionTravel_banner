@@ -1,0 +1,48 @@
+.lbx_lnop{
+    width: 1200px;
+    height: 300px;
+    overflow: hidden;
+    /* background: lightgreen;  */
+    margin:auto;
+    position: relative;
+    }
+    /* .lbx_lnop.opened{
+        transition: 1.5s;  
+    } */
+    .lbx_lnop.closed{
+    height:40px;
+    }
+    .transition{
+    transition : 1.5s;
+    }
+    .lbx_lnop .btn{
+    font-size: 13px;
+    position: absolute;
+    bottom: 0 ;
+    right: 0;
+    padding: 5px 6px;
+    color: #a3a3a3;
+    background-color: black;
+    border-radius: 3px 0 0 0 ;
+    cursor: pointer;
+    display: flex;
+    }
+ 
+    .btn>i {
+    display: block;
+      align-items: flex-end;
+      margin-top: 8px;
+    }
+    img{
+    display: block;
+    position: absolute;
+    }
+    img.opened{   
+    top: 0px;
+    /* transition: 1.5s; */
+    }
+    img.closed{
+    top: -340px;
+    /* transition: 1.5s; */
+    }
+
