@@ -31,7 +31,10 @@
 
 
 $(".banner").banner({
-    autoToggle : false,  
+    openAtStart: true,
+    autoToggle: false,
+    transition: true,
+    counter: 1500, //控制transition 必須和CSS中"transition"秒數相同  
 });
 
 </script>
