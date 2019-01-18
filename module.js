@@ -64,7 +64,7 @@
         }else{
             this.closedState();
         }
-        setTimeout(this.click.bind(this),this.option.autoToggle);  //autoToggle: number --> trigger click
+        setTimeout(this.toggle.bind(this),this.option.autoToggle);  //autoToggle: number --> trigger click
     }
     if (this.option.transition) {    
         this.addTransition();
