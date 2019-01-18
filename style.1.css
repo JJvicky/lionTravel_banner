@@ -9,14 +9,14 @@ body{
     margin:auto;
     position: relative;
 }
-.lbx_lnop>a{
+.lbx_lnop>a{         /* 初始的畫面要先設定 withour open or closed*/
     display: block;
     margin:auto;
     width:1200px;
-    height:300px;
+    /* height:0; */
     overflow: hidden;
     }
-.lbx_lnop>a.open{
+.lbx_lnop>a.opened{
     height: 300px;
     }  
 .lbx_lnop>a.closed{
@@ -37,9 +37,7 @@ border-radius: 3px 0 0 0 ;
 cursor: pointer;
 display: flex;
 box-sizing: border-box;
-width:46px;
-height: 23px;
-overflow: hidden;
+line-height: 1.5;
 }
 
 .lbx_lnop .btn:hover{
@@ -47,10 +45,12 @@ overflow: hidden;
 }
 .btn>i {
     font-size: 1px;
-    margin-top: 4px;
-    margin-left: 1px;
-display: block;
-
+    margin: 6px 2.5px 3px 2.5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+i.fa-caret-up{
+    margin-top: 8px;
 }
 
 img{

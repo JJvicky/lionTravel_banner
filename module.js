@@ -4,7 +4,7 @@
   var Module = function(element, opt) {
     this.ele = element; //element: banner DOM物件
     this.$ele = $(element); //  n.fn 物件
-    this.$btn = $(`<div class =${opt.button.class} ></div>`);
+    this.$btn = $(`<div class ="${opt.button.class}"></div>`);  //注意class要有""
     this.$up = $('<i class="fas fa-sort-up"></i>');
     this.$down = $('<i class="fas fa-caret-down"></i>');
     this.option = opt;
@@ -13,7 +13,6 @@
     this.opened = opt.class.opened; 
     this.closed = opt.class.closed;
     this.toggleTime; //AutoToggle時判斷傳入true or number
-
   };
 
   Module.DEFAULTS = {
@@ -22,7 +21,7 @@
     button: {
       closeText: "收合", // [string]
       openText: "展開", // [string]
-      class: "btn" // [string]
+      class: "btn abc" // [string]
     },
     class: {
       closed: "closed",
@@ -40,8 +39,8 @@
  
 
   Module.prototype.init = function() {
-      
-    this.$ele.append(this.$btn); // 1. button初始
+    this.$ele.append(this.$btn);
+   // 1. button初始
      var openAtStart = this.option.openAtStart; //2. 畫面是否先開
     if(this.option.autoToggle === false){  
           //autoToggle :false --> 正常
@@ -54,6 +53,7 @@
     }else if(this.option.autoToggle === true){ //autoToggle: true --> 與Atstart相反
         console.log("toggle true");
         if (openAtStart){
+          console.log("true true");
             this.closedState();
         }else{
             this.openedState();
@@ -66,6 +66,7 @@
         }
         setTimeout(this.toggle.bind(this),this.option.autoToggle);  //autoToggle: number --> trigger click
     }
+    
     if (this.option.transition) {    
         this.addTransition();
       }
@@ -74,21 +75,19 @@
    
   
   Module.prototype.openedState = function(){
-    console.log("heyheyhey");
     this.$btn.text(this.option.button.closeText).append(this.$up); 
     this.$ele.addClass(this.opened);  
     this.$wrap.addClass("opened");
     this.$img.addClass("opened");
   }
   Module.prototype.closedState = function(){
-      console.log("catch");
     this.$btn.text(this.option.button.openText).append(this.$down);
-    this.$ele.addClass(this.closed);
     this.$img.addClass("closed");
     this.$wrap.addClass("closed");
+    this.$ele.addClass(this.closed);
   }
   Module.prototype.addTransition = function() {    //可以多加!this.$ele.hasClass('transition)
-    this.$wrap.addClass("transition");
+    this.$wrap.addClass("transition");   
   };
   
 //   Module.prototype.toggle = function(){
@@ -125,7 +124,7 @@
       this.$ele.removeClass(this.closed).addClass(this.option.class.opening);
       setTimeout(
         function() {
-          this.$ele.removeClass(this.option.class.opening).addClass("opened");
+          this.$ele.removeClass(this.option.class.opening).addClass(this.opened);
         }.bind(this),
         this.option.counter
       );
@@ -197,7 +196,7 @@
           {},
           Module.DEFAULTS,
           typeof options === "object" && options,
-          typeof options2 === "Obect" && options2
+          //typeof options2 === "Obect" && options2
         );
         module = new Module(this, opts);
         $(this).data(ModuleName, module);
@@ -212,3 +211,5 @@
     });
   };
 })(jQuery);
+
+

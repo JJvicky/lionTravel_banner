@@ -17,8 +17,7 @@
         <div class="lbx_lnop banner">
                 <a class="wrap" href="#">
                     <img class="img" src="./imgs/1200x380.png" title="輸入廣告促銷說明文字" alt="輸入廣告促銷說明文字">
-                </a>
-             
+                </a>             
             </div>
     
 </body>
@@ -32,9 +31,15 @@
 
 $(".banner").banner({
     openAtStart: false,
-    autoToggle: 2000,
+    autoToggle: false,
     transition: true,
-    counter: 1500, //控制transition 必須和CSS中"transition"秒數相同  
+    counter: 1500, //控制transition 必須和CSS中"transition"秒數相同 
+    class: {
+      closed: "closed",
+      closing: "closing",
+      opened: "opened",
+      opening: "opening"
+    }, 
 });
 
 </script>
