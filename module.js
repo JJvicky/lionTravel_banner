@@ -104,7 +104,8 @@
 //       }
 //   }
   
-  Module.prototype.click = function() {
+  
+  Module.prototype.toggle = function() {
      // clearTimeout(this.imgAction);
     if (this.$ele.hasClass(this.opened)) {
       this.close();
@@ -204,7 +205,7 @@
         module.init();
         //註冊btn事件
         module.$btn.on("click", function(e) {
-          module.click();
+          module.toggle();
         });
       }
      
